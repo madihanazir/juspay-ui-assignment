@@ -1,37 +1,38 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
-import Navbar from './components/Navbar'; // Adjusted path to match the correct location
+import Navbar from './components/Navbar';
 import Frame from './components/Frame';
-import RightBar from './components/Rightbar'; // Ensure this path is correct and the file exists
-// If the file does not exist, create it or correct the path.
-// If the file does not exist, create it or correct the path.
+import RightBar from './components/Rightbar';
 
 function App() {
   const [activeNav, setActiveNav] = useState('dashboard');
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar - Fixed 212px */}
-      <Sidebar activeNav={activeNav} setActiveNav={setActiveNav} />
+    <div className="flex h-screen overflow-hidden bg-gray-50">
+      {/* ===== LEFT SIDEBAR (Fixed) ===== */}
+      <aside className="fixed left-0 top-0 h-full w-64 bg-white border-r z-30">
+        <Sidebar activeNav={activeNav} setActiveNav={setActiveNav} />
+      </aside>
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col">
-        {/* Navbar - Fixed height 68px */}
-        <Navbar userName="John Doe" userInitials="JD" />
+      {/* ===== MAIN WRAPPER ===== */}
+      <div className="flex flex-col flex-1 ml-64 mr-72"> {/* margin-left for sidebar, margin-right for rightbar */}
+        {/* ===== NAVBAR (Fixed Top) ===== */}
+        <header className="fixed top-0 left-64 right-72 h-16 bg-white border-b z-20 flex items-center px-6">
+          <Navbar userName="John Doe" userInitials="JD" />
+        </header>
 
-        {/* Content Area - Flex for horizontal layout */}
-        <div className="flex flex-1 overflow-hidden bg-gray-50">
-          {/* Frame - Main Dashboard Content */}
-          <div className="flex-1 overflow-auto">
-            <div className="pt-[140px] pl-[240px] pr-0">
-              <Frame />
-            </div>
+        {/* ===== MAIN SCROLLABLE CONTENT ===== */}
+        <main className="flex-1 overflow-y-auto pt-16 bg-gray-50">
+          <div className="p-6">
+            <Frame />
           </div>
-
-          {/* RightBar - Fixed 280px */}
-          <RightBar />
-        </div>
+        </main>
       </div>
+
+      {/* ===== RIGHT SIDEBAR (Fixed) ===== */}
+      <aside className="fixed right-0 top-0 h-full w-72 bg-white border-l z-30">
+        <RightBar />
+      </aside>
     </div>
   );
 }
