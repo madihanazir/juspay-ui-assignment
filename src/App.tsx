@@ -15,13 +15,13 @@ function App() {
       </aside>
 
       {/* ===== MAIN WRAPPER ===== */}
-      <div className="flex flex-col flex-1 ml-64 mr-72"> {/* margin-left for sidebar, margin-right for rightbar */}
-        {/* ===== NAVBAR (Fixed Top) ===== */}
+      <div className="flex flex-col flex-1 ml-64 mr-72"> {/* space for sidebars */}
+        {/* ===== NAVBAR (Fixed) ===== */}
         <header className="fixed top-0 left-64 right-72 h-16 bg-white border-b z-20 flex items-center px-6">
           <Navbar userName="John Doe" userInitials="JD" />
         </header>
 
-        {/* ===== MAIN SCROLLABLE CONTENT ===== */}
+        {/* ===== MAIN CONTENT AREA (scrolls vertically) ===== */}
         <main className="flex-1 overflow-y-auto pt-16 bg-gray-50">
           <div className="p-6">
             <Frame />
@@ -29,9 +29,11 @@ function App() {
         </main>
       </div>
 
-      {/* ===== RIGHT SIDEBAR (Fixed) ===== */}
-      <aside className="fixed right-0 top-0 h-full w-72 bg-white border-l z-30">
-        <RightBar />
+      {/* ===== RIGHT SIDEBAR (Fixed + scrollable) ===== */}
+      <aside className="fixed right-0 top-0 h-full w-72 bg-white border-l z-30 overflow-y-auto">
+        <div className="pt-16 px-5 pb-5"> {/* small top padding to avoid overlap with navbar */}
+          <RightBar />
+        </div>
       </aside>
     </div>
   );
