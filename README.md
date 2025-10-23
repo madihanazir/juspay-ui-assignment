@@ -1,3 +1,4 @@
+# Juspay UI Developer Assignment
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -33,7 +34,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-# Juspay UI Developer Assignment
+
 
 ## How to Run
 1. Clone the repo
